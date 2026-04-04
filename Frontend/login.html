@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Access Terminal - Login</title>
+  <link rel="stylesheet" href="login.css"/>
+</head>
+<body>
+
+  <main>
+    <!-- Background Decorative Blobs -->
+    <div class="bg-decorative">
+      <div class="bg-blob-top"></div>
+      <div class="bg-blob-bottom"></div>
+    </div>
+
+    <div class="card-wrapper">
+      <!-- Login Card -->
+      <div class="login-card">
+
+        <!-- Branding -->
+        <div class="branding">
+          <div class="brand-icon">
+            <span class="material-symbols-outlined">terminal</span>
+          </div>
+          <h1 class="brand-title">Access Terminal</h1>
+          <p class="brand-subtitle">System Authentication Required</p>
+        </div>
+
+        <!-- Form -->
+        <form action="#" method="POST" class="login-form">
+
+          <!-- Username Field -->
+          <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined input-icon">person</span>
+              <input
+                class="form-input"
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Enter your system username"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- ID Number Field -->
+          <div class="form-group">
+            <label class="form-label" for="id-number">ID Number</label>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined input-icon">badge</span>
+              <input
+                class="form-input"
+                id="id-number"
+                name="id-number"
+                type="text"
+                placeholder="8-digit employee identifier"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="password">Password</label>
+              <a class="forgot-link" href="#">Forgot Access?</a>
+            </div>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined input-icon">lock</span>
+              <input
+                class="form-input"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">
+            <span>Access System</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
+
