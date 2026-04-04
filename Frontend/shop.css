@@ -4,7 +4,7 @@
 
 /* CSS Variables */
 :root {
-  --primary:                    #7ed0ff;
+  --primary:                    #7ca9dc;
   --on-primary:                 #00344a;
   --primary-container:          #4fafe1;
   --on-primary-container:       #004059;
@@ -154,38 +154,6 @@ a { text-decoration: none; color: inherit; }
   gap: 1rem;
 }
 
-.nav-search-wrap {
-  position: relative;
-}
-
-.nav-search {
-  background-color: var(--surface);
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  padding: 0.5rem 2.5rem 0.5rem 1rem;
-  width: 16rem;
-  color: #ffffff;
-  outline: none;
-  transition: box-shadow 0.2s;
-}
-
-.nav-search::placeholder { color: #64748b; }
-
-.nav-search:focus {
-  box-shadow: 0 0 0 2px rgba(126, 208, 255, 0.20);
-}
-
-.nav-search-icon {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #64748b;
-  font-size: 1rem;
-  pointer-events: none;
-}
-
 .nav-icon-btn {
   padding: 0.5rem;
   border-radius: 9999px;
@@ -282,7 +250,7 @@ main {
 }
 
 .shop-card:hover {
-  border-color: #3a9fd0;
+  border-color: var(--primary);
 }
 
 .card-body {
@@ -344,7 +312,7 @@ main {
 
 .btn-purchase {
   width: 100%;
-  background-color: var(--accent);
+  background-color: var(--primary);
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
