@@ -1,6 +1,6 @@
-﻿# Frontend Branch
+﻿# Main Branch
 
-This branch is exclusively for the frontend code.
+This branch contains the combined frontend and backend code.
 
 # Blitz@ASB
 Blitz is the ASB implementation of the famous "Assasin" game done in the US. This repository holds all the relevant code. 
