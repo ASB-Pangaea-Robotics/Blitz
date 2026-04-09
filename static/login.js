@@ -5,7 +5,6 @@ window.onload = function () {
     ux_mode: 'popup'
   });
 
-  // Render an actual Google button inside your existing button
   google.accounts.id.renderButton(
     document.getElementById('google-btn'),
     { theme: 'outline', size: 'large', width: 360 }
@@ -13,16 +12,25 @@ window.onload = function () {
 };
 
 function handleCredentialResponse(response) {
-  const payload = parseJwt(response.credential);
-
-  localStorage.setItem('user_name',    payload.name);
-  localStorage.setItem('user_email',   payload.email);
-  localStorage.setItem('user_picture', payload.picture);
+  fetch('/api/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json'
+    }, 
+    body: JSON.stringify({
+      token: response.credential
+    }) 
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log('Backend Response:', data);
+    localStorage.setItem('user_name', data.name);
+    localStorage.setItem('user_email', data.email);
+    localStorage.setItem('user_picture', data.picture);
+  })
+  .catch(error => {
+    console.error('Login: FAILED', error);
+  })
 
   window.location.href = 'operations.html';
-}
-
-function parseJwt(token) {
-  const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-  return JSON.parse(atob(base64));
 }
