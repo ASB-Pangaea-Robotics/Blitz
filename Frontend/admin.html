@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>TACTICAL COMMAND | Admin Console</title>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="nav-logo">Blitz</div>
+
+  <div class="nav-links">
+    <a class="nav-link" href="operations.html">OPERATIONS</a>
+    <a class="nav-link" href="leaderboard.html">LEADERBOARD</a>
+    <a class="nav-link" href="shop.html">SHOP</a>
+    <a class="nav-link active" href="admin.html">ADMIN</a>
+  </div>
+
+   <div class="nav-right">
+    <div class="nav-icons">
+      <button class="nav-icon-btn">
+           <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="nav-icon-btn" onclick="signOut()">
+          <span class="material-symbols-outlined">logout</span>
+      </button>
+    </div>
+    <div class="nav-user">
+      <span class="nav-username" id="nav-username">USER_NAME</span>
+      <img id="nav-avatar" src="" alt="avatar" style="width:2rem;height:2rem;border-radius:9999px;border:1px solid var(--primary);display:none;"/>
+    </div>
+  </div>
+</nav>
+
+  <main>
+    <div class="main-grid">
+      <section class="video-section">
+
+        <div class="video-section-header">
+          <h3 class="video-title">
+            <span class="material-symbols-outlined">videocam</span>
+            <span id="player-name">Player Name</span>
+            <span> -&gt; </span> 
+            <span id="target-name">Target Name</span>
+          </h3>
+        </div>
+
+        <!-- Portrait Video Area -->
+        <div class="video-area">
+          <div class="video-gradient"></div>
+
+          <!-- Viewfinder Corners -->
+          <div class="vf-tl"></div>
+          <div class="vf-tr"></div>
+          <div class="vf-bl"></div>
+          <div class="vf-br"></div>
+
+          <!-- No signal placeholder -->
+          <div class="video-placeholder">
+            <span class="material-symbols-outlined">sensors_off</span>
+            <p>Waiting for Stream Data...</p>
+          </div>
+
+          <!-- HUD bar -->
+          <div class="video-hud">
+            <div class="hud-stats">
+              <span>LATENCY: 12ms</span>
+              <span>BITRATE: 4500kbps</span>
+            </div>
+            <div class="hud-bar-track">
+              <div class="hud-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decision Buttons -->
+        <div class="decision-grid">
+          <button class="btn-yes">
+            <span class="material-symbols-outlined filled">check_circle</span>
+            YES
+          </button>
+          <button class="btn-no">
+            <span class="material-symbols-outlined filled">cancel</span>
+            NO
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Right Column -->
+      <div class="right-col">
+
+        <!-- Assign Target -->
+        <section class="assign-section">
+          <div>
+            <h3 class="assign-heading">Assign Target</h3>
+            <p class="assign-subtext">Select operator and objective for synchronization.</p>
+          </div>
+
+          <div class="form-fields">
+
+            <!-- Operator select -->
+            <div class="field-group">
+              <label class="field-label">Select Operator</label>
+              <div class="select-wrap">
+                <select class="form-select">
+                  <option>Operator_Echo_12</option>
+                  <option>Operator_Bravo_07</option>
+                  <option>Operator_Alpha_01</option>
+                </select>
+                <span class="material-symbols-outlined select-icon">expand_more</span>
+              </div>
+            </div>
+
+            <!-- Target select -->
+            <div class="field-group">
+              <label class="field-label">Select Target</label>
+              <div class="select-wrap">
+                <select class="form-select">
+                  <option>Circuit Alpha - Participant 001</option>
+                  <option>Circuit Bravo - Participant 082</option>
+                  <option>Circuit Alpha - Participant 104</option>
+                  <option>Circuit Delta - Participant 219</option>
+                </select>
+                <span class="material-symbols-outlined select-icon">expand_more</span>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="btn-confirm">CONFIRM ASSIGNMENT</button>
+        </section>
+
+        <!-- Tactical Powers Console -->
+        <section class="powers-section">
+          <div class="powers-header">
+            <span class="material-symbols-outlined powers-icon">electric_bolt</span>
+            <h3 class="powers-title">Tactical Powers Console</h3>
+          </div>
+
+          <div class="powers-grid">
+
+            <!-- COMBO PLATTER -->
+            <div class="power-card amber">
+              <div class="power-card-header">
+                <span class="power-name">COMBO PLATTER</span>
+                <span class="material-symbols-outlined power-icon">layers</span>
+              </div>
+              <p class="power-desc">All outstanding participants assigned multiple targets.</p>
+              <div class="power-status">READY FOR ACTIVATION</div>
+            </div>
+
+            <!-- FREE FOR ALL -->
+            <div class="power-card red">
+              <div class="power-card-header">
+                <span class="power-name">FREE FOR ALL</span>
+                <span class="material-symbols-outlined power-icon">groups</span>
+              </div>
+              <p class="power-desc">Eliminate anyone within their circuit unrestricted.</p>
+              <div class="power-status">READY FOR ACTIVATION</div>
+            </div>
+
+            <!-- SPEED UP -->
+            <div class="power-card green">
+              <div class="power-card-header">
+                <span class="power-name">SPEED UP</span>
+                <span class="material-symbols-outlined power-icon">fast_forward</span>
+              </div>
+              <p class="power-desc">Increase the global pace of the game by 25%.</p>
+              <div class="power-status">READY FOR ACTIVATION</div>
+            </div>
+
+            <!-- SLOW DOWN -->
+            <div class="power-card blue">
+              <div class="power-card-header">
+                <span class="power-name">SLOW DOWN</span>
+                <span class="material-symbols-outlined power-icon">slow_motion_video</span>
+              </div>
+              <p class="power-desc">Decrease the pace of the game for precision play.</p>
+              <div class="power-status">READY FOR ACTIVATION</div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+      <!-- /Right Column -->
+
+    </div>
+  </main>
+  <script src="admin.js"></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
+</body>
+</html>

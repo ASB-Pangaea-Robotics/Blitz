@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Tactical Terminal - Leaderboard</title>
+  <link rel="stylesheet" href="leaderboard.css"/>
+</head>
+<body>
+
+  <header class="top-nav">
+    <div class="nav-logo">Blitz</div>
+
+    <div class="nav-links">
+      <a class="nav-link" href="operations.html">OPERATIONS</a>
+      <a class="nav-link active" href="leaderboard.html">LEADERBOARD</a>
+      <a class="nav-link" href="shop.html">SHOP</a>
+      <a class="nav-link" href="admin.html">ADMIN</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="nav-icons">
+        <button class="nav-icon-btn">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button class="nav-icon-btn" onclick="signOut()">
+            <span class="material-symbols-outlined">logout</span>
+        </button>
+      </div>
+      <div class="nav-user">
+        <span class="nav-username" id="nav-username">USER_NAME</span>
+        <img id="nav-avatar" src="" alt="avatar" style="width:2rem;height:2rem;border-radius:9999px;border:1px solid var(--primary);display:none;"/>
+      </div>
+  </header>
+
+  <main>
+    <div class="main-inner">
+
+      <section class="prize-section">
+        <div class="prize-glow"></div>
+        <div class="prize-card">
+          <div class="prize-scanline scanline"></div>
+
+          <div class="prize-left">
+            <div class="prize-label">Current Reward Allocation</div>
+            <h1 class="prize-title">PRIZE POOL</h1>
+          </div>
+
+          <div class="prize-right">
+            <div class="prize-amount-box">
+              <span class="prize-amount">100</span>
+              <span class="prize-currency">INR</span>
+            </div>
+            <div class="prize-status">System Status: Active // Payout ready</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grade-tabs">
+        <button class="tab-btn active">GRADE 9</button>
+        <button class="tab-btn inactive">GRADE 10</button>
+        <button class="tab-btn inactive">GRADE 11</button>
+        <button class="tab-btn inactive">GRADE 12</button>
+        <button class="tab-btn inactive">REMAINING PLAYERS</button>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>NAME</th>
+                <th class="align-right">Eliminations</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="row-top">
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num top">#01</span>
+                    <span class="material-symbols-outlined rank-icon-gold">military_tech</span>
+                  </div>
+                </td>
+                <td><span class="player-name top">VANGUARD_42</span></td>
+                <td class="elim-cell top">42</td>
+              </tr>
+
+              <tr class="row-default">
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num mid">#02</span>
+                    <span class="material-symbols-outlined rank-icon-grey">shield</span>
+                  </div>
+                </td>
+                <td><span class="player-name mid">GHOST_WALKER</span></td>
+                <td class="elim-cell mid">38</td>
+              </tr>
+
+              <tr class="row-default">
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num mid">#03</span>
+                    <span class="material-symbols-outlined rank-icon-grey">swords</span>
+                  </div>
+                </td>
+                <td><span class="player-name mid">RAPTOR_X</span></td>
+                <td class="elim-cell mid">35</td>
+              </tr>
+
+              <tr class="row-default">
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num low">#04</span>
+                  </div>
+                </td>
+                <td><span class="player-name low">NULL_VECTOR</span></td>
+                <td class="elim-cell low">29</td>
+              </tr>
+
+              <tr class="row-default">
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num low">#05</span>
+                  </div>
+                </td>
+                <td><span class="player-name low">CYPHER_9</span></td>
+                <td class="elim-cell low">27</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="overlay-border"></div>
+  <div class="scanline overlay-scanline"></div>
+
+  <script src="leaderboard.js"></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
+</body>
+</html>
