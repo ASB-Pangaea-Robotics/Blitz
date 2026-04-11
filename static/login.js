@@ -5,24 +5,39 @@ window.onload = function () {
     ux_mode: 'popup'
   });
 
-  // Render an actual Google button inside your existing button
   google.accounts.id.renderButton(
     document.getElementById('google-btn'),
     { theme: 'outline', size: 'large', width: 360 }
   );
 };
 
-function handleCredentialResponse(response) {
-  const payload = parseJwt(response.credential);
+async function handleCredentialResponse(response) {
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      }, 
+      body: JSON.stringify({
+        token: response.credential
+      }) 
+    });
 
-  localStorage.setItem('user_name',    payload.name);
-  localStorage.setItem('user_email',   payload.email);
-  localStorage.setItem('user_picture', payload.picture);
+    if(!res.ok) {
+      throw new Error( `Login failed: ${res.status} ${res.statusText}`);
+    }
 
-  window.location.href = 'operations.html';
-}
+    const data = await res.json();
 
-function parseJwt(token) {
-  const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-  return JSON.parse(atob(base64));
+    console.log('Backend Response:', data);
+    localStorage.setItem('user_name', data.name);
+    localStorage.setItem('user_email', data.email);
+    localStorage.setItem('user_picture', data.picture);
+    localStorage.setItem('user_grade', data.grade);
+    localStorage.setItem('token', data.token);
+  }
+  catch(error) {
+    console.error('Login error: ', error);
+    alert('Login failed. Please try again.');
+  }
 }

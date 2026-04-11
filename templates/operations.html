@@ -36,8 +36,6 @@
 
   <div class="page-wrapper">
     <main>
-
-      <!-- Page Header -->
       <header class="page-header">
         <div class="section-label">
           <span class="section-label-line"></span>
@@ -47,67 +45,52 @@
         <p class="page-subtitle">Eliminate All Potential Threats</p>
       </header>
 
-      <div class="target-list">
-
-        <div class="target-card">
-
-          <div class="target-image-wrap">
-            <img
-              class="target-image"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH0Y8D8lB4Q7LwVn5-p3W_9qT2P49xR-jRzUfP_oV_U5v9jU9k_4y_x_h_s=s1024"
-              alt="Target profile"
-            />
-            <div class="target-image-overlay"></div>
-          </div>
-
-          <div class="target-info-grid">
-
-            <div>
-              <span class="target-field-label">Identifier</span>
-              <h3 class="target-name">Aadith Kacholia</h3>
-              <span class="target-grade-badge">GRADE: 11</span>
-            </div>
-
-            <div class="status-col">
-              <div>
-                <span class="status-field-label">Current_Status</span>
-                <button class="btn-status">
-                  <span class="material-symbols-outlined">check_circle</span>
-                  ELIMINATED
-                </button>
-              </div>
-              <button class="btn-primary">
-                <span class="material-symbols-outlined">videocam</span>
-                SEND_VIDEO_INTEL
-              </button>
-            </div>
-
+      <div class="target-card">
+        <div class="target-info">
+          <div>
+            <span class="target-field-label">Identifier</span>
+            <h3 class="target-name">Aadith Kacholia</h3>
+            <span class="target-grade-badge">GRADE: 11</span>
           </div>
         </div>
-
+        <button class="btn-primary" onclick="openVideoUpload(1)">
+          <span class="material-symbols-outlined">videocam</span>
+          UPLOAD_VIDEO
+        </button>
       </div>
-
     </main>
   </div>
 
   <nav class="bottom-nav">
-    <a class="bottom-nav-link" href="#">
-      <span class="material-symbols-outlined">home</span>
-      <span class="bottom-nav-label">HOME</span>
-    </a>
-    <a class="bottom-nav-link active" href="#">
+    <a class="bottom-nav-link active" href="operations.html">
       <span class="material-symbols-outlined">gps_fixed</span>
-      <span class="bottom-nav-label">OBJECTIVES</span>
+      <span class="bottom-nav-label">OPERATIONS</span>
     </a>
-    <a class="bottom-nav-link" href="#">
-      <span class="material-symbols-outlined">groups</span>
-      <span class="bottom-nav-label">SQUAD</span>
+    <a class="bottom-nav-link" href="leaderboard.html">
+      <span class="material-symbols-outlined">leaderboard</span>
+      <span class="bottom-nav-label">LEADERBOARD</span>
     </a>
-    <a class="bottom-nav-link" href="#">
-      <span class="material-symbols-outlined">receipt_long</span>
-      <span class="bottom-nav-label">LOGS</span>
+    <a class="bottom-nav-link" href="shop.html">
+      <span class="material-symbols-outlined">shopping_cart</span>
+      <span class="bottom-nav-label">SHOP</span>
+    </a>
+    <a class="bottom-nav-link" href="admin.html">
+      <span class="material-symbols-outlined">shield_person</span>
+      <span class="bottom-nav-label">ADMIN</span>
     </a>
   </nav>
+
+  <!-- Hidden file input -->
+  <input type="file" id="video-file-input" accept="video/*" style="display:none">
+
+  <!-- Upload Modal -->
+  <div id="upload-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center;">
+    <div style="background:var(--surface,#111);border:1px solid var(--primary,#0f0);padding:2rem;max-width:360px;width:90%;font-family:monospace;">
+      <p style="margin:0 0 1rem;color:var(--primary,#0f0);font-size:0.85rem;letter-spacing:0.05em;">UPLOADING_VIDEO_INTEL</p>
+      <p id="upload-status" style="margin:0 0 1.5rem;color:#ccc;font-size:0.8rem;">Preparing transmission...</p>
+      <button id="upload-close-btn" onclick="closeUploadModal()" style="display:none;background:transparent;border:1px solid var(--primary,#0f0);color:var(--primary,#0f0);padding:0.5rem 1rem;cursor:pointer;font-family:monospace;letter-spacing:0.05em;">CLOSE</button>
+    </div>
+  </div>
 
   <script src="../static/operations.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>

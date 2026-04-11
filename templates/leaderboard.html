@@ -48,7 +48,7 @@
 
           <div class="prize-right">
             <div class="prize-amount-box">
-              <span class="prize-amount">100</span>
+              <span class="prize-amount">30K</span>
               <span class="prize-currency">INR</span>
             </div>
             <div class="prize-status">System Status: Active // Payout ready</div>
@@ -58,10 +58,10 @@
 
       <div class="grade-tabs">
         <button class="tab-btn active">GRADE 9</button>
-        <button class="tab-btn inactive">GRADE 10</button>
-        <button class="tab-btn inactive">GRADE 11</button>
-        <button class="tab-btn inactive">GRADE 12</button>
-        <button class="tab-btn inactive">REMAINING PLAYERS</button>
+        <button class="tab-btn">GRADE 10</button>
+        <button class="tab-btn">GRADE 11</button>
+        <button class="tab-btn">GRADE 12</button>
+        <button class="tab-btn">REMAINING PLAYERS</button>
       </div>
 
       <div class="table-wrap">
@@ -74,42 +74,39 @@
                 <th class="align-right">Eliminations</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="leaderboard-body">
 
-              <tr class="row-top">
+              <tr>
                 <td>
                   <div class="rank-cell">
                     <span class="rank-num top">#01</span>
-                    <span class="material-symbols-outlined rank-icon-gold">military_tech</span>
                   </div>
                 </td>
                 <td><span class="player-name top">VANGUARD_42</span></td>
                 <td class="elim-cell top">42</td>
               </tr>
 
-              <tr class="row-default">
+              <tr>
                 <td>
                   <div class="rank-cell">
                     <span class="rank-num mid">#02</span>
-                    <span class="material-symbols-outlined rank-icon-grey">shield</span>
                   </div>
                 </td>
                 <td><span class="player-name mid">GHOST_WALKER</span></td>
                 <td class="elim-cell mid">38</td>
               </tr>
 
-              <tr class="row-default">
+              <tr>
                 <td>
                   <div class="rank-cell">
                     <span class="rank-num mid">#03</span>
-                    <span class="material-symbols-outlined rank-icon-grey">swords</span>
                   </div>
                 </td>
                 <td><span class="player-name mid">RAPTOR_X</span></td>
                 <td class="elim-cell mid">35</td>
               </tr>
 
-              <tr class="row-default">
+              <tr>
                 <td>
                   <div class="rank-cell">
                     <span class="rank-num low">#04</span>
@@ -119,7 +116,7 @@
                 <td class="elim-cell low">29</td>
               </tr>
 
-              <tr class="row-default">
+              <tr class>
                 <td>
                   <div class="rank-cell">
                     <span class="rank-num low">#05</span>
@@ -139,6 +136,25 @@
 
   <div class="overlay-border"></div>
   <div class="scanline overlay-scanline"></div>
+
+    <nav class="bottom-nav">
+    <a class="bottom-nav-link" href="operations.html">
+      <span class="material-symbols-outlined">gps_fixed</span>
+      <span class="bottom-nav-label">OPERATIONS</span>
+    </a>
+    <a class="bottom-nav-link active" href="leaderboard.html">
+      <span class="material-symbols-outlined">leaderboard</span>
+      <span class="bottom-nav-label">LEADERBOARD</span>
+    </a>
+    <a class="bottom-nav-link" href="shop.html">
+      <span class="material-symbols-outlined">shopping_cart</span>
+      <span class="bottom-nav-label">SHOP</span>
+    </a>
+    <a class="bottom-nav-link" href="admin.html">
+      <span class="material-symbols-outlined">shield_person</span>
+      <span class="bottom-nav-label">ADMIN</span>
+    </a>
+  </nav>
 
   <script src="../static/leaderboard.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>

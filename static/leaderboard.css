@@ -77,7 +77,6 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ===== Material Symbols ===== */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -133,7 +132,6 @@ a { text-decoration: none; color: inherit; }
   z-index: 100;
 }
 
-/* Top Navigation Bar */
 .top-nav {
   background-color: var(--nav-bg);
   color: var(--primary);
@@ -225,7 +223,10 @@ a { text-decoration: none; color: inherit; }
 .nav-icon-btn:hover { background-color: rgba(255, 255, 255, 0.05); }
 .nav-icon-btn:active { opacity: 0.8; }
 
-/* ===== MAIN ===== */
+@media (max-width: 768px) {
+  main { margin-bottom: 5rem; }
+}
+
 main {
   padding-top: 6rem;
   padding-bottom: 3rem;
@@ -384,17 +385,14 @@ main {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  background-color: var(--surface);
+  color: var(--neutral-400);
+  border: 1px solid rgba(12, 74, 110, 0.30);
 }
 
 .tab-btn.active {
   background-color: var(--primary);
   color: #000000;
-}
-
-.tab-btn.inactive {
-  background-color: var(--surface);
-  color: var(--neutral-400);
-  border: 1px solid rgba(12, 74, 110, 0.30);
 }
 
 .tab-btn.inactive:hover {
@@ -451,7 +449,7 @@ tbody tr.row-top:hover {
   background-color: rgba(14, 165, 233, 0.10);
 }
 
-tbody tr.row-default:hover {
+tbody tr:hover {
   background-color: rgba(14, 165, 233, 0.05);
 }
 
@@ -503,3 +501,47 @@ td {
 .elim-cell.top  { color: var(--primary); }
 .elim-cell.mid  { color: var(--white); }
 .elim-cell.low  { color: var(--neutral-300); }
+
+.bottom-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  justify-content: space-around;
+  align-items: center;
+  height: 4rem;
+  background-color: var(--surface);
+  border-top: 1px solid rgba(68, 71, 78, 0.3);
+  box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 768px) {
+  .bottom-nav { display: none; }
+}
+
+.bottom-nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--outline);
+  padding: 0.25rem 1rem;
+  transition: color 0.15s;
+  text-decoration: none;
+}
+
+.bottom-nav-link:hover,
+.bottom-nav-link.active {
+  color: var(--primary);
+}
+
+.bottom-nav-label {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0.125rem;
+}

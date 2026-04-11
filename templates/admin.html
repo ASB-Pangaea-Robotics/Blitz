@@ -41,8 +41,8 @@
         <div class="video-section-header">
           <h3 class="video-title">
             <span class="material-symbols-outlined">videocam</span>
-            <span id="player-name">Player Name</span>
-            <span> -&gt; </span> 
+            <span id="user-name">Player Name</span>
+            <span> &rarr; </span> 
             <span id="target-name">Target Name</span>
           </h3>
         </div>
@@ -57,10 +57,13 @@
           <div class="vf-bl"></div>
           <div class="vf-br"></div>
 
+          <!-- Video evidence player -->
+          <video id="evidence-video" controls style="display:none;width:100%;height:100%;object-fit:contain;position:relative;z-index:1;"></video>
+
           <!-- No signal placeholder -->
-          <div class="video-placeholder">
+          <div id="video-placeholder" class="video-placeholder">
             <span class="material-symbols-outlined">sensors_off</span>
-            <p>Waiting for Stream Data...</p>
+            <p id="placeholder-text">Waiting for Stream Data...</p>
           </div>
 
           <!-- HUD bar -->
@@ -77,11 +80,11 @@
 
         <!-- Decision Buttons -->
         <div class="decision-grid">
-          <button class="btn-yes">
+          <button class="btn-yes" onclick="submitDecision('approve')">
             <span class="material-symbols-outlined filled">check_circle</span>
             YES
           </button>
-          <button class="btn-no">
+          <button class="btn-no" onclick="submitDecision('reject')">
             <span class="material-symbols-outlined filled">cancel</span>
             NO
           </button>
@@ -100,15 +103,14 @@
           </div>
 
           <div class="form-fields">
-
             <!-- Operator select -->
             <div class="field-group">
               <label class="field-label">Select Operator</label>
               <div class="select-wrap">
-                <select class="form-select">
-                  <option>Operator_Echo_12</option>
-                  <option>Operator_Bravo_07</option>
-                  <option>Operator_Alpha_01</option>
+                <select class="form-select" id="operator-select">
+                  <option>Ayaan Agarwal</option>
+                  <option>Prakhar Lele</option>
+                  <option>Yash Yajnik</option>
                 </select>
                 <span class="material-symbols-outlined select-icon">expand_more</span>
               </div>
@@ -118,11 +120,10 @@
             <div class="field-group">
               <label class="field-label">Select Target</label>
               <div class="select-wrap">
-                <select class="form-select">
-                  <option>Circuit Alpha - Participant 001</option>
-                  <option>Circuit Bravo - Participant 082</option>
-                  <option>Circuit Alpha - Participant 104</option>
-                  <option>Circuit Delta - Participant 219</option>
+                <select class="form-select" id="target-select">
+                  <option>Aadith Kacholia</option>
+                  <option>Aryaman Maheshwari</option>
+                  <option>Ali Khorakiwala</option>
                 </select>
                 <span class="material-symbols-outlined select-icon">expand_more</span>
               </div>
@@ -130,7 +131,7 @@
 
           </div>
 
-          <button class="btn-confirm">CONFIRM ASSIGNMENT</button>
+          <button class="btn-confirm" id="reassign-btn">CONFIRM ASSIGNMENT</button>
         </section>
 
         <!-- Tactical Powers Console -->
@@ -186,10 +187,28 @@
         </section>
 
       </div>
-      <!-- /Right Column -->
-
     </div>
   </main>
+
+  <nav class="bottom-nav">
+    <a class="bottom-nav-link" href="operations.html">
+      <span class="material-symbols-outlined">gps_fixed</span>
+      <span class="bottom-nav-label">OPERATIONS</span>
+    </a>
+    <a class="bottom-nav-link" href="leaderboard.html">
+      <span class="material-symbols-outlined">leaderboard</span>
+      <span class="bottom-nav-label">LEADERBOARD</span>
+    </a>
+    <a class="bottom-nav-link" href="shop.html">
+      <span class="material-symbols-outlined">shopping_cart</span>
+      <span class="bottom-nav-label">SHOP</span>
+    </a>
+    <a class="bottom-nav-link active" href="admin.html">
+      <span class="material-symbols-outlined">shield_person</span>
+      <span class="bottom-nav-label">ADMIN</span>
+    </a>
+  </nav>
+
   <script src="../static/admin.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
 </body>
