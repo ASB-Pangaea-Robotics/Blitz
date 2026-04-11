@@ -549,7 +549,6 @@ button { cursor: pointer; }
   text-transform: uppercase;
 }
 
-/* Color variants */
 .power-card.amber  { border-left-color: var(--tertiary-amber); }
 .power-card.amber .power-name  { color: var(--tertiary-amber); }
 .power-card.amber:hover .power-icon  { color: var(--tertiary-amber); }
@@ -558,13 +557,9 @@ button { cursor: pointer; }
 .power-card.red .power-name    { color: var(--error); }
 .power-card.red:hover .power-icon    { color: var(--error); }
 
-.power-card.green  { border-left-color: var(--green-500); }
-.power-card.green .power-name  { color: var(--green-500); }
-.power-card.green:hover .power-icon  { color: var(--green-500); }
-
-.power-card.blue   { border-left-color: var(--sky-400); }
-.power-card.blue .power-name   { color: var(--sky-400); }
-.power-card.blue:hover .power-icon   { color: var(--sky-400); }
+.power-card.green   { border-left-color: var(--green-500); }
+.power-card.green .power-name   { color: var(--green-500); }
+.power-card.green:hover .power-icon   { color: var(--green-500); }
 
 .bottom-nav {
   display: flex;
