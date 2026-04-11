@@ -1,23 +1,246 @@
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600;700&family=Sora:wght@400;600&family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+/* ===== CSS Variables ===== */
+:root {
+  --accent:         #3a9fd0;
+  --accent-glow:    rgba(58, 159, 208, 0.3);
+  --accent-glow-sm: rgba(58, 159, 208, 0.1);
+
+  --white:          #ffffff;
+  --on-background:  #1a1c1c;
+  --background:     #faf9f9;
+
+  --slate-500:      #64748b;
+  --slate-700:      #334155;
+  --slate-900:      #0f172a;
+
+  --font-display:   'Black Ops One', cursive;
+  --font-headline:  'Public Sans', sans-serif;
+  --font-body:      'Sora', sans-serif;
+  --font-label:     'Inter', sans-serif;
 }
 
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--on-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ===== Tactical Background ===== */
 .tactical-bg {
-    background-color: #1a1a1a;
-    background-image: 
-        linear-gradient(45deg, #2b2b2b 25%, transparent 25%), 
-        linear-gradient(-45deg, #2b2b2b 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #2b2b2b 75%), 
-        linear-gradient(-45deg, transparent 75%, #2b2b2b 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  /* dark bg */
+  background-color: #0d1117;
 }
 
-.tactical-glitch {
-    text-shadow: 2px 0 #3a9fd0, -2px 0 #e89f2b;
+/* ===== Main Canvas ===== */
+.main-canvas {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ===== Dot Grid Overlay ===== */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.10;
+  pointer-events: none;
+  background-image: radial-gradient(var(--accent) 0.5px, transparent 0.5px);
+  background-size: 30px 30px;
+}
+
+/* ===== Hero Content ===== */
+.hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Eyebrow label */
+.hero-eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: var(--accent);
+  opacity: 0.80;
+  margin-bottom: 1rem;
+}
+
+/* Giant BLITZ title */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 20rem);
+  color: var(--white);
+  line-height: 1;
+  user-select: text;
+  drop-shadow: none;
+  text-shadow: 0 0 15px var(--accent-glow);
+}
+
+.hero-title::selection {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+/* Login button */
+.btn-wrap {
+  margin-top: 2rem;
+}
+
+.btn-login {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: 1.25rem;
+  padding: 1rem 4rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.1s;
+  border-radius: 0;
+}
+
+.btn-login:hover {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.btn-login:active {
+  transform: scale(0.95);
+}
+
+/* Corner accents on hover */
+.btn-corner-tr,
+.btn-corner-bl {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-corner-tr {
+  top: 0;
+  right: 0;
+  border-top: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+}
+
+.btn-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+}
+
+.btn-login:hover .btn-corner-tr,
+.btn-login:hover .btn-corner-bl {
+  opacity: 1;
+}
+
+/* ===== Scanning Line Bar ===== */
+.scan-bar {
+  margin-top: 6rem;
+  width: 16rem;
+  height: 0.25rem;
+  background-color: var(--slate-900);
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-fill {
+  position: absolute;
+  inset: 0;
+  width: 33.333%;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(300%); }
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* ===== Corner Accents ===== */
+.corner-tl,
+.corner-br {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  pointer-events: none;
+}
+
+.corner-tl {
+  top: 3rem;
+  left: 3rem;
+  border-top: 2px solid rgba(51, 65, 85, 0.50);
+  border-left: 2px solid rgba(51, 65, 85, 0.50);
+}
+
+.corner-br {
+  bottom: 3rem;
+  right: 3rem;
+  border-bottom: 2px solid rgba(51, 65, 85, 0.50);
+  border-right: 2px solid rgba(51, 65, 85, 0.50);
+}
+
+/* ===== Status Indicator ===== */
+.status-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--accent);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.status-text {
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  color: var(--slate-500);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
