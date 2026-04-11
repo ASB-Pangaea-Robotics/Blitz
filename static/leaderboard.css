@@ -247,6 +247,7 @@ main {
 /* ===== PRIZE POOL SECTION ===== */
 .prize-section {
   position: relative;
+  margin: 1rem;
 }
 
 /* glow behind card */
@@ -363,7 +364,30 @@ main {
   text-transform: uppercase;
 }
 
-/* ===== GRADE TABS ===== */
+.main-inner {
+  margin: 1rem;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-left: 1rem;
+}
+
+.section-label-line {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--primary);
+}
+
 .grade-tabs {
   display: flex;
   flex-wrap: wrap;

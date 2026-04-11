@@ -1,4 +1,5 @@
-const buttons = document.querySelectorAll('.tab-btn');
+const aliveButtons = document.querySelectorAll('.alive .tab-btn');
+const allButtons = document.querySelectorAll('.all .tab-btn');
 
 window.addEventListener('DOMContentLoaded', function () {
   const name    = localStorage.getItem('user_name');
@@ -30,21 +31,31 @@ function signOut() {
     window.location.href = 'login.html';
 }
 
-buttons.forEach(button => {
+aliveButtons.forEach(button => {
   button.addEventListener('click', () => {
-    buttons.forEach(btn => btn.classList.remove('active'));
+    aliveButtons.forEach(btn => btn.classList.remove('active'));
 
     button.classList.add('active');
-    requestData(button.textContent.trim());
+    requestData(button.textContent.trim(), "alive");
   })
 });
 
-async function requestData(group) {
+allButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    allButtons.forEach(btn => btn.classList.remove('active'));
+
+    button.classList.add('active');
+    requestData(button.textContent.trim(), "all");
+  })
+});
+
+async function requestData(group, type) {
   try{
     const res = await fetch('/api/leaderboard', {
       method: 'POST', 
       body: JSON.stringify({
         leaderboard_group: group,
+        leaderboard_type: type,
         token: localStorage.getItem('token')
       }),
       headers: {

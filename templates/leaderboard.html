@@ -34,27 +34,32 @@
   </header>
 
   <main>
-    <div class="main-inner">
+    <section class="prize-section">
+      <div class="prize-glow"></div>
+      <div class="prize-card">
+        <div class="prize-scanline scanline"></div>
 
-      <section class="prize-section">
-        <div class="prize-glow"></div>
-        <div class="prize-card">
-          <div class="prize-scanline scanline"></div>
-
-          <div class="prize-left">
-            <div class="prize-label">Current Reward Allocation</div>
-            <h1 class="prize-title">PRIZE POOL</h1>
-          </div>
-
-          <div class="prize-right">
-            <div class="prize-amount-box">
-              <span class="prize-amount">30K</span>
-              <span class="prize-currency">INR</span>
-            </div>
-            <div class="prize-status">System Status: Active // Payout ready</div>
-          </div>
+        <div class="prize-left">
+          <div class="prize-label">Current Reward Allocation</div>
+          <h1 class="prize-title">PRIZE POOL</h1>
         </div>
-      </section>
+
+        <div class="prize-right">
+          <div class="prize-amount-box">
+            <span class="prize-amount">30K</span>
+            <span class="prize-currency">INR</span>
+          </div>
+          <div class="prize-status">System Status: Active // Payout ready</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-label">
+          <span class="section-label-line"></span>
+          ALIVE_LEADERBOARD
+    </div>
+    
+    <div class="alive main-inner" id="leaderboard-alive">
 
       <div class="grade-tabs">
         <button class="tab-btn active">GRADE 9</button>
@@ -132,7 +137,93 @@
       </div>
 
     </div>
-  </main>
+
+    <div class="section-label">
+          <span class="section-label-line"></span>
+          ALL_LEADERBOARD
+    </div>
+
+    <div class="all main-inner" id="leaderboard-all">
+
+      <div class="grade-tabs">
+        <button class="tab-btn active">GRADE 9</button>
+        <button class="tab-btn">GRADE 10</button>
+        <button class="tab-btn">GRADE 11</button>
+        <button class="tab-btn">GRADE 12</button>
+        <button class="tab-btn">REMAINING PLAYERS</button>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>NAME</th>
+                <th class="align-right">Eliminations</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+
+              <tr>
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num top">#01</span>
+                  </div>
+                </td>
+                <td><span class="player-name top">VANGUARD_42</span></td>
+                <td class="elim-cell top">42</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num mid">#02</span>
+                  </div>
+                </td>
+                <td><span class="player-name mid">GHOST_WALKER</span></td>
+                <td class="elim-cell mid">38</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num mid">#03</span>
+                  </div>
+                </td>
+                <td><span class="player-name mid">RAPTOR_X</span></td>
+                <td class="elim-cell mid">35</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num low">#04</span>
+                  </div>
+                </td>
+                <td><span class="player-name low">NULL_VECTOR</span></td>
+                <td class="elim-cell low">29</td>
+              </tr>
+
+              <tr class>
+                <td>
+                  <div class="rank-cell">
+                    <span class="rank-num low">#05</span>
+                  </div>
+                </td>
+                <td><span class="player-name low">CYPHER_9</span></td>
+                <td class="elim-cell low">27</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      </div>
+    </main>
+
+    
 
   <div class="overlay-border"></div>
   <div class="scanline overlay-scanline"></div>
