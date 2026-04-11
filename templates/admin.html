@@ -41,7 +41,7 @@
         <div class="video-section-header">
           <h3 class="video-title">
             <span class="material-symbols-outlined">videocam</span>
-            <span id="player-name">Player Name</span>
+            <span id="user-name">Player Name</span>
             <span> &rarr; </span> 
             <span id="target-name">Target Name</span>
           </h3>
@@ -103,15 +103,14 @@
           </div>
 
           <div class="form-fields">
-
             <!-- Operator select -->
             <div class="field-group">
               <label class="field-label">Select Operator</label>
               <div class="select-wrap">
-                <select class="form-select">
-                  <option>Operator_Echo_12</option>
-                  <option>Operator_Bravo_07</option>
-                  <option>Operator_Alpha_01</option>
+                <select class="form-select" id="operator-select">
+                  <option>Ayaan Agarwal</option>
+                  <option>Prakhar Lele</option>
+                  <option>Yash Yajnik</option>
                 </select>
                 <span class="material-symbols-outlined select-icon">expand_more</span>
               </div>
@@ -121,11 +120,10 @@
             <div class="field-group">
               <label class="field-label">Select Target</label>
               <div class="select-wrap">
-                <select class="form-select">
-                  <option>Circuit Alpha - Participant 001</option>
-                  <option>Circuit Bravo - Participant 082</option>
-                  <option>Circuit Alpha - Participant 104</option>
-                  <option>Circuit Delta - Participant 219</option>
+                <select class="form-select" id="target-select">
+                  <option>Aadith Kacholia</option>
+                  <option>Aryaman Maheshwari</option>
+                  <option>Ali Khorakiwala</option>
                 </select>
                 <span class="material-symbols-outlined select-icon">expand_more</span>
               </div>
@@ -133,7 +131,7 @@
 
           </div>
 
-          <button class="btn-confirm">CONFIRM ASSIGNMENT</button>
+          <button class="btn-confirm" id="reassign-btn">CONFIRM ASSIGNMENT</button>
         </section>
 
         <!-- Tactical Powers Console -->

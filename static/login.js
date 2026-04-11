@@ -27,6 +27,7 @@ function handleCredentialResponse(response) {
     localStorage.setItem('user_name', data.name);
     localStorage.setItem('user_email', data.email);
     localStorage.setItem('user_picture', data.picture);
+    localStorage.setItem('user_grade', data.grade);
 
     window.location.href = 'operations.html';
   })

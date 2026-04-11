@@ -14,6 +14,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const avatar = document.getElementById('nav-avatar');
   avatar.src = picture;
   avatar.style.display = 'block';
+
+  requestData("GRADE 9");
 });
 
 function signOut() {
@@ -31,12 +33,20 @@ buttons.forEach(button => {
     buttons.forEach(btn => btn.classList.remove('active'));
 
     button.classList.add('active');
-    requestData();
+    requestData(button.textContent.trim());
   })
 });
 
-function requestData() {
-  fetch('/api/leaderboard')
+function requestData(group) {
+  fetch('/api/leaderboard', {
+    method: 'POST', 
+    body: JSON.stringify({
+      leaderboard_group: group
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
       .then(response => response.json())
       .then(data => {
         console.log('Backend Repoonse: ', data);
@@ -44,7 +54,7 @@ function requestData() {
         displayLeaderboard(data);
       })
       .catch(error => {
-        console.error('Login: FAILED', error);
+        console.error('leaderboard data fetching: FAILED', error);
       });
 }
 

@@ -4,6 +4,7 @@ let currentReview = null;
 window.addEventListener('DOMContentLoaded', function () {
   const name    = localStorage.getItem('user_name');
   const picture = localStorage.getItem('user_picture');
+  const grade = localStorage.getItem('user_grade');
 
   // if (!name) {
   //   window.location.href = 'login.html';
@@ -11,14 +12,72 @@ window.addEventListener('DOMContentLoaded', function () {
   // }
 
   document.getElementById('nav-username').textContent = name;
+  document.getElementById('user-name').textContent = name;
 
   const avatar = document.getElementById('nav-avatar');
   avatar.src = picture;
   avatar.style.display = 'block';
 
+  //Operator and target assignment
+  fetch('/api/reassign', {
+    method: 'POST', 
+    headers: { 'Content Type': 'application/json'},
+    body: JSON.stringify({ grade: grade})
+  })
+  .then(res => res.json())
+  .then(data => {
+    displayOperators(data.operators);
+    displayTargets(data.targets);
+  })
+
   loadPendingReviews();
 });
 
+//Target and Operator Assignment
+const operatorSelector = document.getElementById('operator-select');
+const targetSelector = document.getElementById('target-select');
+
+function displayOperators(operators) {
+  operatorSelector.innerHTML = '';
+
+  operators.forEach(operator => {
+    const option = document.createElement('option');
+    option.value = operator.id;
+    option.textContent = operator.name;
+
+    operatorSelector.appendChild(option);
+  })
+}
+
+function displayTargets(targets) {
+  targetSelector.innerHTML = '';
+
+  targets.forEach(target => {
+    const option = document.createElement('option');
+    option.value = target.id;
+    option.textContent = target.name;
+
+    targetSelector.appendChild(option);
+  })
+}
+
+//Operator and Target Reassignment Submission
+const reassignBtn = document.getElementById('reassign-btn');
+
+reassignBtn.addEventListener('click', async () => {
+  await fetch('/api/confirm_reassign', {
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify({
+      operator_id: operatorSelector.value,
+      operator_name: operatorSelector.options[operatorSelector.selectedIndex].text,
+      target_id: targetSelector.value,
+      target_name: targetSelector.options[targetSelector.selectedIndex].text
+    })
+  })
+});
+
+//Video review stuff
 function loadPendingReviews() {
   fetch('/pending_reviews')
     .then(res => res.json())
@@ -60,7 +119,7 @@ function showNextReview() {
 function submitDecision(decision) {
   if (!currentReview) return;
 
-  fetch('/review_decision', {
+  fetch('/api/review_decision', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ log_id: currentReview.id, decision }),
@@ -70,6 +129,7 @@ function submitDecision(decision) {
     .catch(() => alert('Failed to submit decision. Try again.'));
 }
 
+// Google sign out
 function signOut() {
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_email');
