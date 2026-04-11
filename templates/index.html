@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blitz - Tactical Performance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600;700&family=Sora:wght@400;600&family=Black+Ops+One&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f1f0f0",
+                    "on-secondary-container": "#174c86",
+                    "on-primary-container": "#004059",
+                    "on-secondary-fixed": "#001c3a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#291800",
+                    "tertiary-fixed": "#ffddb4",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#7ed0ff",
+                    "surface-container-highest": "#e3e2e2",
+                    "on-primary-fixed": "#001e2d",
+                    "primary-container": "#4fafe1",
+                    "outline-variant": "#c2c7d0",
+                    "surface-container": "#efeeed",
+                    "inverse-primary": "#7ed0ff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#c5e7ff",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "surface": "#faf9f9",
+                    "secondary-fixed-dim": "#a6c8ff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d4e3ff",
+                    "background": "#faf9f9",
+                    "secondary": "#315f9b",
+                    "secondary-container": "#92bdff",
+                    "primary": "#00658b",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "on-surface": "#1a1c1c",
+                    "surface-container-low": "#f4f3f3",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-container": "#543500",
+                    "on-error": "#ffffff",
+                    "tertiary": "#835500",
+                    "surface-dim": "#dbdada",
+                    "on-surface-variant": "#42474f",
+                    "tertiary-container": "#de9722",
+                    "surface-tint": "#00658b",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "on-background": "#1a1c1c",
+                    "outline": "#727780",
+                    "surface-variant": "#e3e2e2",
+                    "on-secondary-fixed-variant": "#104781",
+                    "surface-container-high": "#e9e8e8",
+                    "surface-bright": "#faf9f9",
+                    "on-primary-fixed-variant": "#004c6a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Sora"],
+                    "label": ["Inter"],
+                    "display": ["Black Ops One", "cursive"]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-body bg-background text-on-background min-h-screen flex flex-col overflow-hidden">
+<!-- Main Content Canvas -->
+<main class="flex-grow tactical-bg flex items-center justify-center relative overflow-hidden h-screen w-screen">
+<!-- Subtle Grid Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#3a9fd0 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
+<!-- Center Hero Focus -->
+<div class="relative z-10 flex flex-col items-center text-center px-4">
+<div class="mb-4">
+<span class="text-xs uppercase tracking-[0.5em] text-[#3a9fd0] font-label font-bold opacity-80">Tactical Interface v1.0</span>
+</div>
+<h1 class="text-[12rem] md:text-[20rem] font-display text-white leading-none selection:bg-[#3a9fd0] selection:text-white drop-shadow-[0_0_15px_rgba(58,159,208,0.3)]">
+            BLITZ
+        </h1>
+<div class="mt-8 group">
+<button class="relative overflow-hidden bg-transparent border-2 border-[#3a9fd0] text-[#3a9fd0] font-headline font-black text-xl px-16 py-4 tracking-[0.3em] hover:bg-[#3a9fd0] hover:text-white transition-all duration-300 active:scale-95 uppercase">
+                LOG IN
+                <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</div>
+<!-- Decorative Scanning Lines -->
+<div class="mt-24 w-64 h-1 bg-slate-900 relative overflow-hidden">
+<div class="absolute inset-0 bg-[#3a9fd0] w-1/3 animate-[shimmer_2s_infinite]" style="box-shadow: 0 0 10px #3a9fd0;"></div>
+</div>
+</div>
+<!-- Corner Accents -->
+<div class="absolute top-12 left-12 w-24 h-24 border-t-2 border-l-2 border-slate-700/50 pointer-events-none"></div>
+<div class="absolute bottom-12 right-12 w-24 h-24 border-b-2 border-r-2 border-slate-700/50 pointer-events-none"></div>
+<!-- Status Indicator (Internal to Canvas) -->
+<div class="absolute bottom-8 left-12 flex items-center space-x-2">
+<div class="w-2 h-2 rounded-full bg-[#3a9fd0] animate-pulse"></div>
+<span class="text-[10px] text-slate-500 tracking-widest uppercase font-label font-bold">System Online</span>
+</div>
+</main>
+</body></html>
