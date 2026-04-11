@@ -5,10 +5,10 @@ window.addEventListener('DOMContentLoaded', function () {
   const name    = localStorage.getItem('user_name');
   const picture = localStorage.getItem('user_picture');
 
-  if (!name) {
-    window.location.href = 'login.html';
-    return;
-  }
+  // if (!name) {
+  //   window.location.href = 'login.html';
+  //   return;
+  // }
 
   document.getElementById('nav-username').textContent = name;
 
@@ -47,7 +47,7 @@ function showNextReview() {
   }
 
   currentReview = reviewQueue.shift();
-  document.getElementById('player-name').textContent = currentReview.blitzer;
+  document.getElementById('player-name').textContent = currentReview.player;
   document.getElementById('target-name').textContent = currentReview.target;
 
   placeholder.style.display = 'none';

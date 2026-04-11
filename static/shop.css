@@ -184,7 +184,10 @@ main {
   main { padding-bottom: 2.5rem; }
 }
 
-/* Page Header */
+@media (max-width: 768px) {
+  main { padding-bottom: 5rem; }
+}
+
 .page-header-wrap {
   max-width: 80rem;
   margin: 0 auto;
@@ -343,25 +346,19 @@ main {
   font-size: 0.875rem;
 }
 
-/* Bottom Navigation Bar for Mobile View */
 .bottom-nav {
   display: flex;
-  background-color: rgba(26, 28, 28, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: var(--nav-text);
-  font-family: 'Public Sans', sans-serif;
-  font-size: 0.75rem;
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   z-index: 50;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   justify-content: space-around;
   align-items: center;
   height: 4rem;
-  padding: 0 1rem;
+  background-color: var(--surface);
+  border-top: 1px solid rgba(68, 71, 78, 0.3);
+  box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.2);
 }
 
 @media (min-width: 768px) {
@@ -373,15 +370,22 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #64748b;
-  text-decoration: none;
+  color: var(--outline);
+  padding: 0.25rem 1rem;
   transition: color 0.15s;
-  gap: 0.125rem;
+  text-decoration: none;
 }
 
-.bottom-nav-link:hover { color: var(--nav-text); }
-
+.bottom-nav-link:hover,
 .bottom-nav-link.active {
-  color: var(--nav-text);
-  transform: scale(1.10);
+  color: var(--primary);
+}
+
+.bottom-nav-label {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0.125rem;
 }
