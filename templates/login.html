@@ -28,7 +28,16 @@
       </div>
     </div>
   </main>
+
+  <script>
+    const LOGIN_URL = "{{ url_for('login') }}";
+    const ADMIN_URL = "{{ url_for('admin') }}";
+    //{# const ADMINLITE_URL = "{{ url_for('admin_lite') }}"; #}
+    const OPERATIONS_URL = "{{ url_for('operations') }}";
+    const SHOP_URL = "{{ url_for('shop') }}";
+    const LEADERBOARD_URL = "{{ url_for('leaderboard') }}";
+  </script>
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
-  <script src="../static/login.js"></script>
 </body>
 </html>

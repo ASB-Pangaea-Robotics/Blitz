@@ -6,20 +6,15 @@ const targetSelector = document.getElementById('target-select');
 const reassignBtn = document.getElementById('reassign-btn');
 
 window.addEventListener('DOMContentLoaded', function () {
-  const name    = localStorage.getItem('user_name');
-  const picture = localStorage.getItem('user_picture');
+  const name = localStorage.getItem('blitzer_name');
 
   // if (!name) {
-  //   window.location.href = 'login.html';
+  //   window.location.href = LOGIN_URL;
   //   return;
   // }
 
-  document.getElementById('nav-username').textContent = name;
-  document.getElementById('user-name').textContent = name;
-
-  const avatar = document.getElementById('nav-avatar');
-  avatar.src = picture;
-  avatar.style.display = 'block';
+  document.getElementById('nav-username').textContent = name || 'USER_NAME';
+  document.getElementById('user-name').textContent = name || 'USER_NAME';
 
   //Operator and target assignment
   requestReassignments();
@@ -164,11 +159,12 @@ async function submitDecision(decision) {
 
 // Google sign out
 function signOut() {
-    localStorage.removeItem('user_name');
-    localStorage.removeItem('user_email');
-    localStorage.removeItem('user_picture');
+    localStorage.removeItem('blitzer_name');
+    localStorage.removeItem('blitzer_email');
+    localStorage.removeItem('blitzer_grade');
+    localStorage.removeItem('token');
 
     google.accounts.id.disableAutoSelect();
 
-    window.location.href = 'login.html';
+    window.location.href = LOGIN_URL;
 }

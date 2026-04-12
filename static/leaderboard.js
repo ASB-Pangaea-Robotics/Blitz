@@ -2,34 +2,18 @@ const aliveButtons = document.querySelectorAll('.alive .tab-btn');
 const allButtons = document.querySelectorAll('.all .tab-btn');
 
 window.addEventListener('DOMContentLoaded', function () {
-  const name    = localStorage.getItem('user_name');
-  const picture = localStorage.getItem('user_picture');
+  const name = localStorage.getItem('blitzer_name');
 
   // if (!name) {
-  //   window.location.href = 'login.html';
+  //   window.location.href = LOGIN_URL;
   //   return;
   // }
 
-  document.getElementById('nav-username').textContent = name;
+  document.getElementById('nav-username').textContent = name || 'USER_NAME';
 
-  const avatar = document.getElementById('nav-avatar');
-  avatar.src = picture;
-  avatar.style.display = 'block';
-
-  requestData("GRADE 9");
+  requestData("ALIVE", "GRADE 9");
+  requestData("ALL", "GRADE 9");
 });
-
-function signOut() {
-    localStorage.removeItem('user_name');
-    localStorage.removeItem('user_email');
-    localStorage.removeItem('user_picture');
-    localStorage.removeItem('user_grade');
-    localStorage.removeItem('token');
-
-    google.accounts.id.disableAutoSelect();
-
-    window.location.href = 'login.html';
-}
 
 aliveButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -68,18 +52,15 @@ async function requestData(group, type) {
     }
 
     const data = await res.json();
-
-    console.log('Backend Response: ', data);
-
-    displayLeaderboard(data);
+    displayLeaderboard(data, type);
   }
   catch(error) {
     console.error('Error fetching leaderboard data: ', error);
   }
 }
 
-function displayLeaderboard(items) {
-  const leaderboardBody = document.getElementById('leaderboard-body');
+function displayLeaderboard(items, type) {
+  const leaderboardBody = type === "ALIVE" ? document.getElementById('leaderboard-body-alive') : document.getElementById('leaderboard-body-all');
 
   leaderboardBody.innerHTML = '';
 
@@ -98,4 +79,15 @@ function displayLeaderboard(items) {
 
     leaderboardBody.appendChild(row);
   })
+}
+
+function signOut() {
+    localStorage.removeItem('blitzer_name');
+    localStorage.removeItem('blitzer_email');
+    localStorage.removeItem('blitzer_grade');
+    localStorage.removeItem('token');
+
+    google.accounts.id.disableAutoSelect();
+
+    window.location.href = LOGIN_URL;
 }

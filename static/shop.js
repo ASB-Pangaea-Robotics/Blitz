@@ -1,28 +1,13 @@
 window.addEventListener('DOMContentLoaded', function () {
-  const name    = localStorage.getItem('user_name');
-  const picture = localStorage.getItem('user_picture');
+  const name = localStorage.getItem('blitzer_name');
 
   // if (!name) {
-  //   window.location.href = 'login.html';
+  //   window.location.href = LOGIN_URL;
   //   return;
   // }
 
-  if (document.getElementById('nav-username')) {
-    document.getElementById('nav-username').textContent = name || 'USER_NAME';
-  }
-
-  const avatar = document.getElementById('nav-avatar');
-  avatar.src = picture;
-  avatar.style.display = 'block';
+  document.getElementById('nav-username').textContent = name || 'USER_NAME';
 });
-
-function signOut() {
-  localStorage.removeItem('user_name');
-  localStorage.removeItem('user_email');
-  localStorage.removeItem('user_picture');
-  google.accounts.id.disableAutoSelect();
-  window.location.href = 'login.html';
-}
 
 function openPrivateBountyModal() {
   const selectTarget = document.getElementById('private-target-select');
@@ -113,3 +98,13 @@ function confirmRevive() {
 document.getElementById('revive-modal').addEventListener('click', function (e) {
   if (e.target === this) closeReviveModal();
 });
+
+function signOut() {
+  localStorage.removeItem('blitzer_name');
+  localStorage.removeItem('blitzer_email');
+  localStorage.removeItem('blitzer_grade');
+  localStorage.removeItem('token');
+
+  google.accounts.id.disableAutoSelect();
+  window.location.href = LOGIN_URL;
+}

@@ -1,42 +1,43 @@
+let currentLogId = null;
+
 window.addEventListener('DOMContentLoaded', function () {
-  const name    = localStorage.getItem('user_name');
-  const picture = localStorage.getItem('user_picture');
+  const name = localStorage.getItem('blitzer_name');
 
   // if (!name) {
-  //   window.location.href = 'login.html';
+  //   window.location.href = LOGIN_URL;
   //   return;
   // }
 
-  document.getElementById('nav-username').textContent = name;
-
-  const avatar = document.getElementById('nav-avatar');
-  avatar.src = picture;
-  avatar.style.display = 'block';
+  document.getElementById('nav-username').textContent = name || 'USER_NAME';
 
   document.getElementById('video-file-input').addEventListener('change', handleFileSelected);
 });
 
-fetch('/api/operations')
-  .then(response => response.json())
-  .then(data => {
-    console.log('Backend Response: ', data);
+async function renderTargetLog() {
+  try{
+    const res = await fetch('/api/operations');
 
-    document.querySelector('.target-image').src = data.target_image;
+    if(!res.ok) {
+      throw new Error(`Fetching target log failed: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+
     document.querySelector('.target-name').textContent = data.target_name;
     document.querySelector('.target-grade-badge').textContent = "Grade: " + data.target_grade;
-  })
-  .catch(error => {
-    console.error('Login: FAILED', error);
-  })
-
-let currentLogId = null;
+  }
+  catch(error) {
+    console.error('Fetching target log failed: ', error);
+    alert('Failed to load target log. Please try again.');
+  }
+}
 
 function openVideoUpload(logId) {
   currentLogId = logId;
   document.getElementById('video-file-input').click();
 }
 
-function handleFileSelected(event) {
+async function handleFileSelected(event) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -52,37 +53,43 @@ function handleFileSelected(event) {
   formData.append('file', file);
   formData.append('log_id', currentLogId);
 
-  fetch('/upload_video', {
-    method: 'POST',
-    body: formData,
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        status.textContent = 'Transmission successful. Evidence logged.';
-      } else {
-        status.textContent = `Upload failed: ${data.error}`;
-      }
-    })
-    .catch(() => {
-      status.textContent = 'Transmission error. Check connection.';
-    })
-    .finally(() => {
-      closeBtn.style.display = 'inline-block';
-      event.target.value = '';
+  try{
+    const res = await fetch('/upload_video', {
+      method: 'POST',
+      body: formData,
     });
+
+    if(!res.ok) {
+      throw new Error(`Upload failed: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    if (data.success) {
+          status.textContent = 'Transmission successful. Evidence logged.';
+    } else {
+          status.textContent = `Upload failed: ${data.error}`;
+    }
+  }
+  catch(error) {
+    status.textContent = 'Transmission error. Check connection.';
+  }
+  finally {
+    closeBtn.style.display = 'inline-block';
+    event.target.value = '';
+  }
 }
 
-function closeUploadModal() {
+async function closeUploadModal() {
   document.getElementById('upload-modal').style.display = 'none';
 }
 
-function signOut() {
-    localStorage.removeItem('user_name');
-    localStorage.removeItem('user_email');
-    localStorage.removeItem('user_picture');
+async function signOut() {
+    localStorage.removeItem('blitzer_name');
+    localStorage.removeItem('blitzer_email');
+    localStorage.removeItem('blitzer_grade');
+    localStorage.removeItem('token');
 
     google.accounts.id.disableAutoSelect();
 
-    window.location.href = 'login.html';
+    window.location.href = LOGIN_URL;
 }

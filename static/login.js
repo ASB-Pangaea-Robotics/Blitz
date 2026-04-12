@@ -28,12 +28,9 @@ async function handleCredentialResponse(response) {
     }
 
     const data = await res.json();
-
-    console.log('Backend Response:', data);
-    localStorage.setItem('user_name', data.name);
-    localStorage.setItem('user_email', data.email);
-    localStorage.setItem('user_picture', data.picture);
-    localStorage.setItem('user_grade', data.grade);
+    localStorage.setItem('blitzer_email', data.email);
+    localStorage.setItme('blitzer_name', localStorage.getItem('blitzer_email').split('@')[0]);
+    localStorage.setItem('blitzer_grade', data.grade);
     localStorage.setItem('token', data.token);
   }
   catch(error) {
