@@ -24,86 +24,92 @@ function signOut() {
   window.location.href = 'login.html';
 }
 
-// ===== PURCHASE MODAL =====
+function openPrivateBountyModal() {
+  const selectTarget = document.getElementById('private-target-select');
+  //selectTarget.innerHTML = [ADD_FROM_BACKEND_TARGETS]
 
-// Item catalogue — add/edit items here
-const SHOP_ITEMS = {
-  'REVIVE':        { price: 2000 },
-  'BOUNTY':        { price: 500  },
-  'PUBLIC_BOUNTY': { price: 2000 },
-};
-
-// Target list — replace with real names as needed
-const TARGETS = [
-  'Aadith Kacholia',
-  'Riya Sharma',
-  'Kabir Mehta',
-  'Ananya Iyer',
-  'Dev Patel',
-];
-
-let currentItem = null;
-let currentQty  = 1;
-
-function openPurchaseModal(itemName) {
-  currentItem = itemName;
-  currentQty  = 1;
-
-  const item = SHOP_ITEMS[itemName];
-
-  // Set modal content
-  document.getElementById('modal-item-name').textContent = itemName;
-  document.getElementById('modal-price-value').textContent =
-    item.price.toLocaleString('en-IN');
-  document.getElementById('modal-qty-display').textContent = 1;
-  updateTotalPrice();
-
-  // Populate target dropdown
-  const select = document.getElementById('modal-target-select');
-  select.innerHTML = TARGETS.map(t => `<option value="${t}">${t}</option>`).join('');
-
-  // Show modal
-  document.getElementById('purchase-modal').classList.add('open');
+  const selectHunter = document.getElementById('private-hunter-select');
+  //selectHunter.innerHTML = [ADD_FROM_BACKEND_HUNTERS]
+  document.getElementById('private-bounty-modal').classList.add('open');
 }
 
-function closePurchaseModal() {
-  document.getElementById('purchase-modal').classList.remove('open');
-  currentItem = null;
-  currentQty  = 1;
+function closePrivateBountyModal() {
+  document.getElementById('private-bounty-modal').classList.remove('open');
 }
 
-function changeQty(delta) {
-  currentQty = Math.max(1, currentQty + delta); // minimum 1
-  document.getElementById('modal-qty-display').textContent = currentQty;
-  updateTotalPrice();
-}
-
-function updateTotalPrice() {
-  if (!currentItem) return;
-  const unit  = SHOP_ITEMS[currentItem].price;
-  const total = unit * currentQty;
-  document.getElementById('modal-price-value').textContent =
-    total.toLocaleString('en-IN');
-}
-
-function confirmPurchase() {
-  const target = document.getElementById('modal-target-select').value;
-  const total  = SHOP_ITEMS[currentItem].price * currentQty;
+function confirmPrivateBounty() {
+  const target = document.getElementById('private-target-select').value;
+  const hunter = document.getElementById('private-hunter-select').value;
 
   // TODO: send to backend
   console.log('Purchase confirmed:', {
-    item:     currentItem,
-    quantity: currentQty,
+    item:     "PRIVATE_BOUNTY",
     target:   target,
-    total:    total,
+    hunter:   hunter,
+    total:    500,
   });
 
-  // Close modal — replace alert with your own success UI if you want
-  closePurchaseModal();
-  alert(`Purchase confirmed!\n${currentQty}x ${currentItem} for ${target}\nTotal: ₹${total.toLocaleString('en-IN')}`);
+  closePrivateBountyModal();
+  alert(`Purchase confirmed!\nPRIVATE_BOUNTY for ${target}\nHunter: ${hunter}\nTotal: ₹500`);
 }
 
 // Close modal when clicking the dark overlay background
-document.getElementById('purchase-modal').addEventListener('click', function (e) {
-  if (e.target === this) closePurchaseModal();
+document.getElementById('private-bounty-modal').addEventListener('click', function (e) {
+  if (e.target === this) closePrivateBountyModal();
+});
+
+function openPublicBountyModal() {
+  const selectTarget = document.getElementById('public-target-select');
+  //selectTarget.innerHTML = [ADD_FROM_BACKEND_TARGETS]
+
+  document.getElementById('public-bounty-modal').classList.add('open');
+}
+
+function closePublicBountyModal() {
+  document.getElementById('public-bounty-modal').classList.remove('open');
+}
+
+function confirmPublicBounty() {
+  const target = document.getElementById('public-target-select').value;
+
+  // TODO: send to backend
+  console.log('Purchase confirmed:', {
+    item:     "PUBLIC_BOUNTY",
+    target:   target,
+    total:    2000,
+  });
+
+  closePublicBountyModal();
+  alert(`Purchase confirmed!\nPUBLIC_BOUNTY for ${target}\nTotal: ₹2,000`);
+}
+
+// Close modal when clicking the dark overlay background
+document.getElementById('public-bounty-modal').addEventListener('click', function (e) {
+  if (e.target === this) closePublicBountyModal();
+});
+
+
+function openReviveModal() {
+  document.getElementById('revive-modal').classList.add('open');
+}
+
+function closeReviveModal() {
+  document.getElementById('revive-modal').classList.remove('open');
+}
+
+function confirmRevive() {
+  // TODO: send to backend
+  console.log('Purchase confirmed:', {
+    item:     "Revive",
+    quantity: 1,
+    target:   localStorage.getItem('user_name'),
+    total:    2000,
+  });
+
+  closeReviveModal();
+  alert(`Purchase confirmed!\nREVIVE\nTotal: ₹2,000 `);
+}
+
+document.getElementById('revive-modal').addEventListener('click', function (e) {
+  if (e.target === this) closeReviveModal();
 });

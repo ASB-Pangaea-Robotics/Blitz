@@ -59,7 +59,7 @@
                 <span class="card-cost-label">COST</span>
                 <span class="card-price">2,000 <span class="card-price-currency">INR</span></span>
               </div>
-              <button class="btn-purchase" onclick="openPurchaseModal('REVIVE')">
+              <button class="btn-purchase" onclick="openReviveModal()">
                 <span class="material-symbols-outlined">shopping_bag</span>
                 PURCHASE
               </button>
@@ -77,7 +77,7 @@
                 <span class="card-cost-label">COST</span>
                 <span class="card-price">500 <span class="card-price-currency">INR</span></span>
               </div>
-              <button class="btn-purchase" onclick="openPurchaseModal('BOUNTY')">
+              <button class="btn-purchase" onclick="openPrivateBountyModal()">
                 <span class="material-symbols-outlined">shopping_bag</span>
                 PURCHASE
               </button>
@@ -95,7 +95,7 @@
                 <span class="card-cost-label">COST</span>
                 <span class="card-price">2,000 <span class="card-price-currency">INR</span></span>
               </div>
-              <button class="btn-purchase" onclick="openPurchaseModal('PUBLIC_BOUNTY')">
+              <button class="btn-purchase" onclick="openPublicBountyModal()">
                 <span class="material-symbols-outlined">shopping_bag</span>
                 PURCHASE
               </button>
@@ -128,17 +128,16 @@
     </a>
   </nav>
 
-  <!-- ===== PURCHASE MODAL ===== -->
-  <div class="modal-overlay" id="purchase-modal">
+  <!-- ===== REVIVE MODAL ===== -->
+  <div class="modal-overlay" id="revive-modal">
     <div class="modal">
-
       <!-- Header -->
       <div class="modal-header">
         <div>
           <div class="modal-title">Confirm Purchase</div>
-          <div class="modal-item-name" id="modal-item-name">ITEM_NAME</div>
+          <div class="modal-item-name">REVIVE</div>
         </div>
-        <button class="modal-close" onclick="closePurchaseModal()">
+        <button class="modal-close" onclick="closeReviveModal()">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
@@ -149,18 +148,53 @@
       <div class="modal-field">
         <span class="modal-label">Total Price</span>
         <div class="modal-price">
-          ₹<span id="modal-price-value">0</span>
+          ₹<span>2,000</span>
           <span class="modal-price-currency">INR</span>
         </div>
       </div>
 
-      <!-- Quantity stepper -->
+      <!-- Action buttons -->
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closeReviveModal()">Cancel</button>
+        <button class="btn-modal-confirm" onclick="confirmRevive()">Confirm</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PRIVATE BOUNTY MODAL ===== -->
+  <div class="modal-overlay" id="private-bounty-modal">
+    <div class="modal">
+      <!-- Header -->
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Confirm Purchase</div>
+          <div class="modal-item-name">PRIVATE_BOUNTY</div>
+        </div>
+        <button class="modal-close" onclick="closePrivateBountyModal()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <hr class="modal-divider"/>
+
+      <!-- Price (read-only text) -->
       <div class="modal-field">
-        <span class="modal-label">Quantity</span>
-        <div class="qty-stepper">
-          <button class="qty-btn" onclick="changeQty(-1)">−</button>
-          <div class="qty-display" id="modal-qty-display">1</div>
-          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        <span class="modal-label">Total Price</span>
+        <div class="modal-price">
+          ₹<span>500</span>
+          <span class="modal-price-currency">INR</span>
+        </div>
+      </div>
+
+      <!-- Hunter dropdown -->
+      <div class="modal-field">
+        <span class="modal-label">Select Hunter</span>
+        <div class="modal-select-wrap">
+          <select class="modal-select" id="private-hunter-select">
+            <!-- populated by JS -->
+          </select>
+          <span class="material-symbols-outlined modal-select-icon">expand_more</span>
         </div>
       </div>
 
@@ -168,7 +202,7 @@
       <div class="modal-field">
         <span class="modal-label">Select Target</span>
         <div class="modal-select-wrap">
-          <select class="modal-select" id="modal-target-select">
+          <select class="modal-select" id="private-target-select">
             <!-- populated by JS -->
           </select>
           <span class="material-symbols-outlined modal-select-icon">expand_more</span>
@@ -179,8 +213,55 @@
 
       <!-- Action buttons -->
       <div class="modal-actions">
-        <button class="btn-modal-cancel" onclick="closePurchaseModal()">Cancel</button>
-        <button class="btn-modal-confirm" onclick="confirmPurchase()">Confirm</button>
+        <button class="btn-modal-cancel" onclick="closePrivateBountyModal()">Cancel</button>
+        <button class="btn-modal-confirm" onclick="confirmPrivateBounty()">Confirm</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PUBLIC BOUNTY MODAL ===== -->
+  <div class="modal-overlay" id="public-bounty-modal">
+    <div class="modal">
+      <!-- Header -->
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Confirm Purchase</div>
+          <div class="modal-item-name">PUBLIC_BOUNTY</div>
+        </div>
+        <button class="modal-close" onclick="closePublicBountyModal()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <hr class="modal-divider"/>
+
+      <!-- Price (read-only text) -->
+      <div class="modal-field">
+        <span class="modal-label">Total Price</span>
+        <div class="modal-price">
+          ₹<span>2,000</span>
+          <span class="modal-price-currency">INR</span>
+        </div>
+      </div>
+
+      <!-- Target dropdown -->
+      <div class="modal-field">
+        <span class="modal-label">Select Target</span>
+        <div class="modal-select-wrap">
+          <select class="modal-select" id="public-target-select">
+            <!-- populated by JS -->
+          </select>
+          <span class="material-symbols-outlined modal-select-icon">expand_more</span>
+        </div>
+      </div>
+
+      <hr class="modal-divider"/>
+
+      <!-- Action buttons -->
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closePublicBountyModal()">Cancel</button>
+        <button class="btn-modal-confirm" onclick="confirmPublicBounty()">Confirm</button>
       </div>
 
     </div>
